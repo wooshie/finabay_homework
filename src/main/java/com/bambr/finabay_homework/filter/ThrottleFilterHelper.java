@@ -19,7 +19,7 @@ public class ThrottleFilterHelper {
             requestPerTimeUnitPerCountry.clear();
             return 1L;
         });
-        requestPerTimeUnitPerCountry.computeIfPresent(checkupKey, (key, value) -> value++);
+        requestPerTimeUnitPerCountry.computeIfPresent(checkupKey, (key, value) -> ++value);
         if (requestPerTimeUnitPerCountry.get(checkupKey) >= limit) {
             rejectionReason.append(TOO_MANY_REQUEST_PER_COUNTRY);
         }
